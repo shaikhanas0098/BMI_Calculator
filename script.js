@@ -1,15 +1,16 @@
 const historyList = JSON.parse(localStorage.getItem("bmiHistory")) || [];
 
 document.querySelector("#calculate").addEventListener("click", calculateBMI);
-document.addEventListener("keydown", e => e.key === "Enter" && calculateBMI());
+document.querySelector("#reset").addEventListener("click", resetForm);
+window.addEventListener("load", renderHistory);
 
 function calculateBMI() {
-    const age = ageValue();
+    const age = Number(value("#age"));
     const gender = value("#gender");
-    const height = value("#height");
-    const weight = value("#weight");
+    const height = Number(value("#height"));
+    const weight = Number(value("#weight"));
 
-    const bmiText = document.querySelector("#bmi-value");
+    const bmiValue = document.querySelector("#bmi-value");
     const category = document.querySelector("#bmi-category");
     const advice = document.querySelector("#advice");
     const ideal = document.querySelector("#ideal-weight");
@@ -20,14 +21,29 @@ function calculateBMI() {
         return;
     }
 
+    if (age < 5 || age > 120) {
+        category.textContent = "Enter valid age (5–120)";
+        return;
+    }
+
+    if (height < 50 || height > 250) {
+        category.textContent = "Enter valid height (50–250 cm)";
+        return;
+    }
+
+    if (weight < 10 || weight > 300) {
+        category.textContent = "Enter valid weight (10–300 kg)";
+        return;
+    }
+
     const bmi = (weight / ((height / 100) ** 2)).toFixed(1);
-    bmiText.textContent = bmi;
+    bmiValue.textContent = bmi;
 
     let status = "", tips = "", color = "";
 
     if (bmi < 18.5) {
         status = "Underweight";
-        tips = "Increase calorie intake & consult a nutritionist.";
+        tips = "Increase calorie intake and consult a nutritionist.";
         color = "underweight";
         bar.style.width = "25%";
     } else if (bmi < 25) {
@@ -45,6 +61,10 @@ function calculateBMI() {
         tips = "Medical consultation is recommended.";
         color = "obese";
         bar.style.width = "100%";
+    }
+
+    if (gender === "Female" && bmi > 25) {
+        tips += " Consider consulting a specialist.";
     }
 
     category.className = `category ${color}`;
@@ -70,20 +90,15 @@ function renderHistory() {
     list.innerHTML = historyList.map(item => `<li>${item}</li>`).join("");
 }
 
-function value(id) {
-    return document.querySelector(id).value;
-}
-
-function ageValue() {
-    const age = value("#age");
-    return age && age > 0;
-}
-
-document.querySelector("#reset").addEventListener("click", () => {
+function resetForm() {
     document.querySelectorAll("input, select").forEach(i => i.value = "");
     document.querySelector("#bmi-value").textContent = "--";
     document.querySelector("#bmi-category").textContent = "--";
     document.querySelector("#advice").textContent = "";
     document.querySelector("#ideal-weight").textContent = "";
     document.querySelector("#progress-bar").style.width = "0%";
-});
+}
+
+function value(id) {
+    return document.querySelector(id).value;
+}
