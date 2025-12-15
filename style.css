@@ -1,6 +1,3 @@
-/* =========================
-   GLOBAL RESET
-========================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,41 +5,28 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* =========================
-   BODY
-========================= */
 body {
     min-height: 100vh;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #ffffff;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px;
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
 .container {
     width: 100%;
     max-width: 420px;
     text-align: center;
 }
 
-/* =========================
-   HEADING
-========================= */
 h1 {
     margin-bottom: 18px;
     font-size: clamp(1.8rem, 4vw, 2.4rem);
 }
 
-/* =========================
-   CARD / CALCULATOR
-========================= */
 .calculator {
-    width: 100%;
     background: rgba(255, 255, 255, 0.12);
     padding: 22px;
     border-radius: 16px;
@@ -50,9 +34,6 @@ h1 {
     backdrop-filter: blur(12px);
 }
 
-/* =========================
-   INPUT FIELDS
-========================= */
 .input-field {
     margin-bottom: 14px;
     text-align: left;
@@ -74,9 +55,6 @@ h1 {
     outline: none;
 }
 
-/* =========================
-   BUTTONS
-========================= */
 button {
     width: 100%;
     padding: 12px;
@@ -85,10 +63,9 @@ button {
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
-/* Calculate Button */
 #calculate {
     background: #00e676;
     color: #000;
@@ -97,23 +74,17 @@ button {
 
 #calculate:hover {
     background: #00c853;
-    transform: translateY(-1px);
 }
 
-/* Reset Button */
 .reset-btn {
     background: #ff5252;
-    color: #ffffff;
+    color: white;
 }
 
 .reset-btn:hover {
     background: #d32f2f;
-    transform: translateY(-1px);
 }
 
-/* =========================
-   RESULT SECTION
-========================= */
 .result {
     margin-top: 18px;
 }
@@ -129,15 +100,11 @@ button {
     font-weight: 600;
 }
 
-/* Category Colors */
 .category.normal { color: #00e676; }
 .category.underweight { color: #ffeb3b; }
 .category.overweight { color: #ff9800; }
 .category.obese { color: #ff5252; }
 
-/* =========================
-   PROGRESS BAR
-========================= */
 .progress {
     width: 100%;
     height: 12px;
@@ -151,12 +118,17 @@ button {
     height: 100%;
     width: 0%;
     background: linear-gradient(90deg, #00e676, #00c853);
-    transition: width 0.4s ease;
+    transition: width 0.4s;
 }
 
-/* =========================
-   ADVICE & IDEAL WEIGHT
-========================= */
+.bmi-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
 #advice,
 #ideal-weight {
     margin-top: 8px;
@@ -164,44 +136,20 @@ button {
     color: #e0e0e0;
 }
 
-/* =========================
-   HISTORY LIST
-========================= */
 #history {
     list-style: none;
     margin-top: 12px;
-    padding-left: 0;
     text-align: left;
 }
 
 #history li {
     font-size: 0.85rem;
     padding: 6px 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+    border-bottom: 1px dashed rgba(255,255,255,0.4);
 }
 
-/* =========================
-   RESPONSIVE BREAKPOINTS
-========================= */
-
-/* Small Phones */
-@media (max-width: 360px) {
-    .calculator {
-        padding: 18px;
-    }
-
-    button {
-        font-size: 1rem;
-    }
-
-    .input-field label {
-        font-size: 0.95rem;
-    }
-}
-
-/* Tablets */
-@media (min-width: 768px) {
-    .container {
-        max-width: 460px;
-    }
+.disclaimer {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 12px;
 }
