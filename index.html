@@ -14,13 +14,13 @@
     <div class="calculator">
 
         <div class="input-field">
-            <label>Age</label>
-            <input type="number" id="age" placeholder="Enter age">
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="Enter age" aria-label="Age input">
         </div>
 
         <div class="input-field">
-            <label>Gender</label>
-            <select id="gender">
+            <label for="gender">Gender</label>
+            <select id="gender" aria-label="Gender selection">
                 <option value="">Select</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -28,13 +28,13 @@
         </div>
 
         <div class="input-field">
-            <label>Height (cm)</label>
-            <input type="number" id="height">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" placeholder="Enter height" aria-label="Height input">
         </div>
 
         <div class="input-field">
-            <label>Weight (kg)</label>
-            <input type="number" id="weight">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="Enter weight" aria-label="Weight input">
         </div>
 
         <button id="calculate">Calculate BMI</button>
@@ -42,6 +42,13 @@
 
         <div class="progress">
             <div id="progress-bar"></div>
+        </div>
+
+        <div class="bmi-scale">
+            <span>Under</span>
+            <span>Normal</span>
+            <span>Over</span>
+            <span>Obese</span>
         </div>
 
         <div class="result">
@@ -53,6 +60,10 @@
 
         <h3>📊 History (Last 5)</h3>
         <ul id="history"></ul>
+
+        <p class="disclaimer">
+            ⚠ This BMI calculator is for educational purposes only and not a medical diagnosis.
+        </p>
 
     </div>
 </div>
