@@ -2,38 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BMI Calculator</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BMI Health Analyzer</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-    <div class="container">
-        <h1>BMI Calculator</h1>
+<div class="container">
+    <h1>🏥 BMI Health Analyzer</h1>
 
-        <div class="calculator">
+    <div class="calculator">
 
-            <div class="input-field">
-                <label>Height (cm)</label>
-                <input type="number" id="height" placeholder="Enter height in cm" required>
-            </div>
-
-            <div class="input-field">
-                <label>Weight (kg)</label>
-                <input type="number" id="weight" placeholder="Enter weight in kg" required>
-            </div>
-
-            <button id="calculate">Calculate BMI</button>
-            <button id="reset" class="reset-btn">Reset</button>
-
-            <div class="result">
-                <h2>Your BMI: <span id="bmi-value">--</span></h2>
-                <p class="category" id="bmi-category">--</p>
-            </div>
-
+        <div class="input-field">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter age">
         </div>
-    </div>
 
-    <script src="script.js"></script>
+        <div class="input-field">
+            <label>Gender</label>
+            <select id="gender">
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+
+        <div class="input-field">
+            <label>Height (cm)</label>
+            <input type="number" id="height">
+        </div>
+
+        <div class="input-field">
+            <label>Weight (kg)</label>
+            <input type="number" id="weight">
+        </div>
+
+        <button id="calculate">Calculate BMI</button>
+        <button id="reset" class="reset-btn">Reset</button>
+
+        <div class="progress">
+            <div id="progress-bar"></div>
+        </div>
+
+        <div class="result">
+            <h2>BMI: <span id="bmi-value">--</span></h2>
+            <p id="bmi-category" class="category">--</p>
+            <p id="advice"></p>
+            <p id="ideal-weight"></p>
+        </div>
+
+        <h3>📊 History (Last 5)</h3>
+        <ul id="history"></ul>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
