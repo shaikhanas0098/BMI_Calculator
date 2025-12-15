@@ -1,137 +1,143 @@
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
-    margin: 0; 
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
-body { 
+/* =========================
+   BODY
+========================= */
+body {
+    min-height: 100vh;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 20px;
+    padding: 15px;
 }
 
-.container { 
+/* =========================
+   MAIN CONTAINER
+========================= */
+.container {
     width: 100%;
     max-width: 420px;
     text-align: center;
-} 
+}
 
+/* =========================
+   HEADING
+========================= */
 h1 {
-    margin-bottom: 20px;
-    font-size: 2.4rem;
+    margin-bottom: 18px;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
 }
 
+/* =========================
+   CARD / CALCULATOR
+========================= */
 .calculator {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
+    width: 100%;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
 }
 
+/* =========================
+   INPUT FIELDS
+========================= */
 .input-field {
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     text-align: left;
-} 
+}
 
-.input-field label { 
-    font-size: 1.2rem;
+.input-field label {
+    font-size: 1rem;
     margin-bottom: 6px;
     display: block;
-} 
+}
 
-.input-field input { 
+.input-field input,
+.input-field select {
     width: 100%;
-    padding: 12px; 
-    font-size: 1.1rem; 
-    border-radius: 8px; 
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
     border: none;
     outline: none;
-} 
+}
 
+/* =========================
+   BUTTONS
+========================= */
 button {
     width: 100%;
-    padding: 12px; 
+    padding: 12px;
     margin-top: 12px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-radius: 8px;
-    border: none; 
+    border: none;
     cursor: pointer;
-    transition: 0.3s;
-} 
+    transition: all 0.3s ease;
+}
 
-#calculate { 
-    background: #00e676; 
+/* Calculate Button */
+#calculate {
+    background: #00e676;
     color: #000;
-    font-weight: 600; 
-} 
+    font-weight: 600;
+}
 
-#calculate:hover { 
+#calculate:hover {
     background: #00c853;
+    transform: translateY(-1px);
 }
 
-.reset-btn { 
-    background: #ff5252; 
-    color: white;
+/* Reset Button */
+.reset-btn {
+    background: #ff5252;
+    color: #ffffff;
 }
 
-.reset-btn:hover { 
-    background: #d32f2f; 
-} 
+.reset-btn:hover {
+    background: #d32f2f;
+    transform: translateY(-1px);
+}
 
+/* =========================
+   RESULT SECTION
+========================= */
 .result {
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
-#bmi-value { 
-    font-size: 2.2rem; 
+#bmi-value {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
     font-weight: bold;
 }
 
-.category { 
-    font-size: 1.3rem;
-    margin-top: 6px; 
-    font-weight: 600;
-} 
-
-.category.normal { 
-    color: #00e676;
-}
-
-.category.underweight { 
-    color: #ffeb3b;
-}
-
-.category.overweight {
-    color: #ff9800; 
-}
-
-.category.obese { 
-    color: #ff5252; 
-} 
-
-/* Responsive */ 
-@media (max-width: 480px) { 
-    h1 {
-        font-size: 2rem;
-    }
-    .calculator { 
-        padding: 20px;
-    } 
-}
-
-select {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
+.category {
     font-size: 1.1rem;
+    margin-top: 6px;
+    font-weight: 600;
 }
 
+/* Category Colors */
+.category.normal { color: #00e676; }
+.category.underweight { color: #ffeb3b; }
+.category.overweight { color: #ff9800; }
+.category.obese { color: #ff5252; }
+
+/* =========================
+   PROGRESS BAR
+========================= */
 .progress {
     width: 100%;
     height: 12px;
@@ -144,24 +150,58 @@ select {
 #progress-bar {
     height: 100%;
     width: 0%;
-    background: #00e676;
-    transition: width 0.4s;
+    background: linear-gradient(90deg, #00e676, #00c853);
+    transition: width 0.4s ease;
 }
 
-#advice, #ideal-weight {
+/* =========================
+   ADVICE & IDEAL WEIGHT
+========================= */
+#advice,
+#ideal-weight {
     margin-top: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #e0e0e0;
 }
 
+/* =========================
+   HISTORY LIST
+========================= */
 #history {
     list-style: none;
-    margin-top: 10px;
+    margin-top: 12px;
+    padding-left: 0;
     text-align: left;
 }
 
 #history li {
-    font-size: 0.9rem;
-    padding: 4px 0;
-    border-bottom: 1px dashed #aaa;
+    font-size: 0.85rem;
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+========================= */
+
+/* Small Phones */
+@media (max-width: 360px) {
+    .calculator {
+        padding: 18px;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    .input-field label {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .container {
+        max-width: 460px;
+    }
 }
